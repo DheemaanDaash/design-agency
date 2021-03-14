@@ -1,0 +1,18 @@
+npm install --global yarn
+yarn --version
+yarn init
+yarn add express ejs express-ejs-layouts
+yarn add nodemon -D
+yarn add laravel-mix -D
+yarn add cross-env --save-dev
+
+Errors:
+[webpack-cli] Error: Unknown option '--hide-modules'
+[webpack-cli] Run 'webpack --help' to see available commands and options 
+Solutions:
+Just remove —hide-modules from the package json 
+
+->Always When Open
+yarn watch[Run Line 7 if not working]
+yarn dev
+

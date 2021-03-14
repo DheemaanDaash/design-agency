@@ -1,0 +1,70 @@
+body {
+  font-family: "Play", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #232323;
+}
+
+nav li:last-child a {
+  background: #00adff;
+}
+nav li:last-child a:hover {
+  background: #33BDFF;
+}
+
+nav li a {
+  transition: all 0.3s ease-in-out;
+}
+nav li a:hover {
+  color: #00adff;
+}
+
+section.hero {
+  background: #d2f1ff;
+}
+
+.btn-primary {
+  background: #33BDFF;
+  border-color: #33BDFF;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.btn-primary:hover {
+  border: 2px solid #00adff;
+  color: #00adff;
+  background: white;
+}
+
+.add-to-cart {
+  border: 2px solid #00adff;
+  color: #00adff;
+  transition: all 0.3s ease-in-out;
+}
+.add-to-cart:hover {
+  background: #33BDFF;
+  border-color: #33BDFF;
+  color: white;
+}
+
+footer {
+  background: #00adff;
+  color: white;
+  border-radius: 25px 25px 0px 0px;
+}
+
+section.cart {
+  background: #d2f1ff;
+}
+section.cart .amount {
+  color: #00adff;
+}
+
+section.login {
+  background: #d2f1ff;
+  min-height: calc(100vh-86px);
+}
+section.login a {
+  color: #00adff;
+}
+section.login a:hover {
+  color: #33BDFF;
+}
