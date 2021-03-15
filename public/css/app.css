@@ -34,6 +34,10 @@ section.hero {
   background: white;
 }
 
+.type {
+  background: #d2f1ff;
+}
+
 .add-to-cart {
   border: 2px solid #00adff;
   color: #00adff;

@@ -18,61 +18,23 @@
 <section class="menu container mx-auto py-8">
     <h1 class="text-6xl font-bold mb-8 text-center">Our Services</h1>
     <div class="grid grid-cols-4 col-gap-12">
-        <div class="w-80 rounded-xl px-4 shadow-xl">
-            <img class="h-40 mb-4 mx-auto py-4" src="/img/service-1.png" alt="">
+        <% services.forEach(function(service) { %>
+            <div class="w-80 rounded-xl px-4 shadow-xl">
+            <img class="h-40 mb-4 mx-auto py-4" src="/img/<%= service.image %>" alt="">
             <div class="text-center">
-                <h2 class="text-xl font-bold mb-4 text-lg text-center">LOGO</h2>
-                <span class="py-1 px-4 rounded-full uppercase text-xs">Get your brand logo in 3 working days with 2 revisions.</span>
+                <h2 class="text-xl font-bold mb-4 text-lg text-center"><%= service.name %></h2>
+                <span class="py-1 px-4 rounded-full uppercase text-xs"><%= service.description %></span><br>
+                <!-- <span class="type py-1 px-4 rounded-full uppercase text-xs"><%= service.type %></span> -->
                 <div class="flex items-center justify-around py-4">
                     <span>Starting at</span>
-                    <span class="font-bold text-lg">৳500 </span> <br>
+                    <span class="font-bold text-lg">৳<%= service.price %> </span> <br>
                     <button class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
                         <span class="text-xs">Order Now</span>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="w-80 rounded-xl px-4 shadow-xl">
-            <img class="h-40 mb-4 mx-auto py-4" src="/img/service-2.png" alt="">
-            <div class="text-center">
-                <h2 class="text-xl font-bold mb-4 text-lg text-center">PORTRAIT</h2>
-                <span class="py-1 px-4 rounded-full uppercase text-xs">Get your custom style portrait in 5 working days with 2 revisions.</span>
-                <div class="flex items-center justify-around py-4">
-                    <span>Starting at </span>
-                    <span class="font-bold text-lg">৳500 </span> <br>
-                    <button class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
-                        <span class="text-xs">Order Now</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="w-80 rounded-xl px-4 shadow-xl">
-            <img class="h-40 mb-4 mx-auto py-4" src="/img/service-3.png" alt="">
-            <div class="text-center">
-                <h2 class="text-xl font-bold mb-4 text-lg text-center">BANNER</h2>
-                <span class="py-1 px-4 rounded-full uppercase text-xs">Get your banner/flyer/poster in 5 working days with 2 revisions.</span>
-                <div class="flex items-center justify-around py-4">
-                    <span>Starting at </span>
-                    <span class="font-bold text-lg">৳500 </span> <br>
-                    <button class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
-                        <span class="text-xs">Order Now</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="w-80 rounded-xl px-4 shadow-xl">
-            <img class="h-40 mb-4 mx-auto py-4" src="/img/service-4.png" alt="">
-            <div class="text-center">
-                <h2 class="text-xl font-bold mb-4 text-lg text-center">CARD</h2>
-                <span class="py-1 px-4 rounded-full uppercase text-xs">Get your custom business card in 2 working days with 2 revisions.</span>
-                <div class="flex items-center justify-around py-4">
-                    <span>Starting at </span>
-                    <span class="font-bold text-lg">৳500 </span> <br>
-                    <button class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
-                        <span class="text-xs">Order Now</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <% }) %>
+        
     </div>
 </section>

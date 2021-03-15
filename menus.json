@@ -1,0 +1,39 @@
+[
+    {
+        "_id": {
+          "$oid": "5eee651f739f8c674fd736ee"
+        },
+        "name": "LOGO",
+        "image": "service-1.png",
+        "description": "Get your brand logo in 3 working days with 2 revisions.",
+        "price": "699",
+        "type": "Abstract"
+      },{
+        "_id": {
+          "$oid": "5eee6671a27a66807cf2bea3"
+        },
+        "name": "PORTRAIT",
+        "image": "service-2.png",
+        "description": "Get your custom style portrait in 5 working days with 2 revisions.",
+        "price": "949",
+        "type": "Cartoon"
+      },{
+        "_id": {
+          "$oid": "5eee6692a27a66807cf2bea4"
+        },
+        "name": "BANNER",
+        "image": "service-3.png",
+        "description": "Get your banner/flyer/poster in 5 working days with 2 revisions.",
+        "price": "899",
+        "type": "Promotional"
+      },{
+        "_id": {
+          "$oid": "5eee66a5a27a66807cf2bea5"
+        },
+        "name": "CARD",
+        "image": "service-4.png",
+        "description": "Get your custom business card in 2 working days with 2 revisions.",
+        "price": "549",
+        "type": "Corporate"
+      }
+]
