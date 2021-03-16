@@ -11,6 +11,8 @@ Errors:
 [webpack-cli] Run 'webpack --help' to see available commands and options 
 Solutions:
 Just remove —hide-modules from the package json 
+"connect-mongo": "^3.2.0",//4.4.0
+mongooseConnection: connection, //mongooseConnection: mongoose.Connection,
 
 ->Always When Open
 yarn watch[Run Line 7 if not working]
