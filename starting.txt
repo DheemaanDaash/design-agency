@@ -15,8 +15,13 @@ Just remove —hide-modules from the package json
 mongooseConnection: connection, //mongooseConnection: mongoose.Connection,
 
 ->Always When Open
+Ctrl+Shift+C [To run cmd in folder]
+
 yarn watch[Run Line 7 if not working]
 yarn dev
+
+npm run development -- --watch
+npm run dev
 
 git
 git push -u origin master

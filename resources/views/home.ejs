@@ -28,7 +28,7 @@
                 <div class="flex items-center justify-around py-4">
                     <span>Starting at</span>
                     <span class="font-bold text-lg">৳<%= service.price %> </span> <br>
-                    <button class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
+                    <button data-service="<%= JSON.stringify(service) %>" class="add-to-cart py-1 px-2 rounded-full flex items-center font-bold">
                         <span class="text-xs">Order Now</span>
                     </button>
                 </div>

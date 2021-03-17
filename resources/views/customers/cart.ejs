@@ -1,43 +1,29 @@
 <section class="cart py-16">
+    <% if(session.cart) { %>
     <div class="order container mx-auto w-1/2">
         <div class="flex items-center border-b-2 border-gray-400 pb-4">
             <i class="fas fa-palette"></i>
             <h1 class="font-bold ml-4 text-2xl">Task Summary</h1>
         </div>
         <div class="order-list">
+            <% for(let service of Object.values(session.cart.items)) {%>
             <div class="flex items-center my-8">
-                <img class="w-24" src="/img/service-1.png" alt="">
+                <img class="w-24" src="/img/<%= service.item.image %>" alt="">
                 <div class="flex-1 ml-4">
-                    <h1>Logo</h1>
-                    <span>Minimal</span>
+                    <h1><%= service.item.name %></h1>
+                    <span><%= service.item.type %></span>
                 </div>
-                <span class="flex-1">1 Version</span>
-                <span class="font-bold text-lg">৳500</span>
+                <span class="flex-1"><%= service.qty %> Version</span>
+                <span class="font-bold text-lg">৳ <%= service.item.price * service.qty %></span>
             </div>
-            <div class="flex items-center my-8">
-                <img class="w-24" src="/img/service-1.png" alt="">
-                <div class="flex-1 ml-4">
-                    <h1>Logo</h1>
-                    <span>Minimal</span>
-                </div>
-                <span class="flex-1">1 Version</span>
-                <span class="font-bold text-lg">৳500</span>
-            </div>
-            <div class="flex items-center my-8">
-                <img class="w-24" src="/img/service-1.png" alt="">
-                <div class="flex-1 ml-4">
-                    <h1>Logo</h1>
-                    <span>Minimal</span>
-                </div>
-                <span class="flex-1">1 Version</span>
-                <span class="font-bold text-lg">৳500</span>
-            </div>
+            <% } %>
+
         </div>
         <hr class="border-gray-500">
         <div class="text-right py-4">
             <div>
                 <span class="text-lg font-bold">Total Amount</span>
-                <span class="amount text-2xl font-bold ml-2">৳1000</span>
+                <span class="amount text-2xl font-bold ml-2">৳ <%= session.cart.totalPrice %></span>
             </div>
             <div>  
                 <form action="" class="mt-12">
@@ -51,13 +37,14 @@
             <!-- <a href="" class="inline-block cursor-pointer btn-primary px-6 py-2 rounded-full font-bold mt-6">Login to continue</a> -->
         </div>
     </div>
-
-    <!-- <div class="empty-cart py-16">
+    <% } else { %>
+    <div class="empty-cart py-16">
         <div class="container mx-auto text-center">
             <h1 class="text-3xl font-bold mb-2">Let's Create A Task 😀</h1>
             <p class="text-gray-500 text-lg mb-12">To order any task, please go to Home</p>
             <img class="w-2/5 mx-auto" src="/img/create-task.png" alt="create-task">
             <a href="/" class="btn-primary inline-block px-6 py-2 rounded-lg  font-bold mt-12">Go Back</a>
         </div>
-    </div> -->
+    </div>
+    <% } %>
 </section>

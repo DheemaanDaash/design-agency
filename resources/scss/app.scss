@@ -1,4 +1,6 @@
 @import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
 
 body {
     font-family: 'Play', sans-serif;
@@ -49,6 +51,9 @@ section.hero {
         border-color: $primary-hover;
         color: white;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 footer {
@@ -73,4 +78,9 @@ section.login {
             color: $primary-hover;
         }
     }
+}
+
+.noty_theme__mint {
+    border-radius: 50px!important;
+    padding-left: 8px!important;
 }
