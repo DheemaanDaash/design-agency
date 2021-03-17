@@ -10,7 +10,7 @@ const session = require('express-session')
 const flash = require('express-flash')
 // const MongoDbStore =  require ('connect-mongo')(session)
 const MongoStore = require('connect-mongo');
-
+const passport = require('passport')
 
 //Database Connection
 const url = 'mongodb://localhost/design';
@@ -29,6 +29,7 @@ app.use(session({
     saveUninitialized: true,
     resave: true,
     store: MongoStore.create({
+        //mongoUrl: "mongodb+srv://dh33m44n:P9yqJXKMAGGaTsGX@cluster0.mskgs.mongodb.net/design?retryWrites=true&w=majority",
         mongoUrl: "mongodb://localhost/design",
         // db: mongoose.connection.db,
         ttl: 5 * 24 * 60 * 60 // 5 days
@@ -36,15 +37,23 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 } //24 hours
 }))
 
+// Passport config
+const passportInit = require('./app/config/passport')
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(flash())
 
 //Asset
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 // Global Middleware
 app.use((req, res, next) => {
     res.locals.session = req.session
+    res.locals.user = req.user
     next()
 })
 
