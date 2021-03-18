@@ -58,8 +58,8 @@ function authController() {
             const hashedPassword =  await bcrypt.hash(password, 10)
             // Create a user
             const user = new User({
-                name,
-                email,
+                name: name,
+                email: email,
                 password: hashedPassword
             })
 
@@ -67,7 +67,7 @@ function authController() {
                 //Login
                 return res.redirect('/')
             }).catch(err => {
-                    req.flash('error', 'Something went wrong...!')
+                    req.flash('error', 'Something went wrong...!'),
                     console.log(err)
                         return res.redirect('/register')
             })
