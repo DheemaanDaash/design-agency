@@ -67,7 +67,7 @@ function authController() {
                 //Login
                 return res.redirect('/')
             }).catch(err => {
-                    req.flash('error', 'Something went wrong!')
+                    req.flash('error', 'Something went wrong...!')
                         return res.redirect('/register')
             })
         },

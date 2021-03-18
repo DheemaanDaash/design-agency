@@ -18,7 +18,7 @@ function updateCart(service) {
         new Noty({
             type: 'error',
             timeout: 1000,
-            text: 'Something went wrong!',
+            text: 'Something went wrong',
             progressBar: false,
             layout: 'topLeft'
         }).show();

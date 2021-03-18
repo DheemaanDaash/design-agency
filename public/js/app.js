@@ -1865,7 +1865,7 @@ function updateCart(service) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       type: 'error',
       timeout: 1000,
-      text: 'Something went wrong!',
+      text: 'Something went wrong',
       progressBar: false,
       layout: 'topLeft'
     }).show();
