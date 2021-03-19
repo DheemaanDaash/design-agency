@@ -1,0 +1,45 @@
+<section class="tasks light-section">
+    <div class="container mx-auto pt-12">
+        <h1 class="font-bold text-lg mb-4">All Tasks</h1>
+        <% if(messages.success) { %>
+        <div id="success-alert" class="flex items -center bg-green-500 text-white text-sm font-bold px-4 py-3 rounded-full" role="alert">
+            <i class="fas fa-crop-alt"></i>
+            <p class="ml-2"><%= messages.success %></p>
+        </div>
+        <% } %>
+        <table class="w-full table-auto bg-white mb-4">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Tasks</th>
+                    <th class="px-4 py-2 text-left">Phone</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(tasks.length) { %>
+                    <% tasks.forEach((task) => { %>
+                        <tr>
+                            <td class="border px-4 py-2">
+                                <a class="link" href="/"><%= task._id %></a>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <%= task.phone %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <%= task.address %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <%= moment (task.createdAt).format('hh:mm A') %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td class="p-4"><span>No tasks found!</span></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</section>
