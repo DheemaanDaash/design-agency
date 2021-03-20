@@ -21,7 +21,7 @@
                     <% tasks.forEach((task) => { %>
                         <tr>
                             <td class="border px-4 py-2">
-                                <a class="link" href="/"><%= task._id %></a>
+                                <a class="link" href="/customer/tasks/<%= task._id %>"><%= task._id %></a>
                             </td>
                             <td class="border px-4 py-2">
                                 <%= task.phone %>

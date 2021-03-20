@@ -1,6 +1,8 @@
 import axios from 'axios'
 import Noty from 'noty'
-import { initAdmin } from './admin'
+import moment from 'moment'
+//import { initAdmin } from './admin'
+import initAdmin from './admin'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
@@ -40,4 +42,67 @@ if(alertMsg) {
         alertMsg.remove()
     }, 2000)
 }
-initAdmin()
+
+
+// Change task status
+let statuses = document.querySelectorAll('.status_line')
+let hiddenInput = document.querySelector('#hiddenInput')
+let task = hiddenInput ? hiddenInput.value : null
+task = JSON.parse(task)
+let time = document.createElement('small')
+
+
+function updateStatus(task) {
+    statuses.forEach( (status) => {
+        status.classList.remove('step-completed')
+        status.classList.remove('current')
+    })
+    let setpCompleted = true;
+    statuses.forEach( (status) => {
+        let dataProp = status.dataset.status
+        if(setpCompleted) {
+            status.classList.add('step-completed')
+        }
+        if(dataProp === task.status) {
+            setpCompleted = false
+            time.innerText = moment(task.updatedAt).format('hh:mm A')
+            status.appendChild(time)
+            if(status.nextElementSibling) {
+                status.nextElementSibling.classList.add('current')
+            }
+            
+        }
+    })
+}
+
+updateStatus(task);
+
+// Socket
+let socket = io()
+
+initAdmin(socket)
+
+// Join
+if(task) {
+    socket.emit('join', `task_${task._id}`)
+}
+
+let adminAreaPath = window.location.pathname
+console.log(adminAreaPath)
+if(adminAreaPath.includes('admin')) {
+    socket.emit('join', 'adminRoom')
+}
+
+socket.io('taskUpdated', (data) => {
+    const updatedTask = { ...task }
+    updatedTask.updatedAt = moment().format()
+    updatedTask.status = data.status
+    updateStatus(updatedTask)
+    new Noty({
+        type: 'success',
+        timeout: 1000,
+        text: 'Task updated',
+        progressBar: false,
+        layout: 'topLeft'
+    }).show();
+})

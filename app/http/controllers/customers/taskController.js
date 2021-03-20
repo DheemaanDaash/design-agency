@@ -17,9 +17,15 @@ function orderController () {
                 address
             })
             task.save().then(result =>{
-                req.flash('sussess', 'Task created successfully')
-                delete req.session.cart
-                return res.redirect('/customer/tasks')
+                Task.populate(result, { path: 'customerId' }, (err, placedTask) => {
+                    req.flash('sussess', 'Task created successfully')
+                    delete req.session.cart
+                    // Emit
+                    const eventEmitter = req.app.get('eventEmitter')
+                    eventEmitter.emit('taskPlaced', placedTask)
+                    return res.redirect('/customer/tasks')
+                })
+                
             }).catch(err => {
                 req.flash('error', 'Something went wrong')
                 return res.redirect('/cart')
@@ -31,6 +37,14 @@ function orderController () {
                 { sort: { 'createdAt': -1 } } )
                 res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check-0, pre-check=0')
             res.render('customers/tasks', { tasks: tasks, moment: moment })
+        },
+        async show(req, res) {
+            const task = await Task.findById(req.params.id)
+            // Authorize User
+            if(req.user._id.toString() === task.customerId.toString()) {
+                return res.render('customers/singleTask', { task })
+            } 
+            return res.redirect('/')
         }
     }
 }

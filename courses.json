@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Basic Photoshop Course",
+        "image": "Photoshop.png",
+        "description": "This course is for Basic.",
+        "price": "3500",
+        "type": "Basic"
+      },{
+        "name": "Basic Illustrator Course",
+        "image": "Illustrator.png",
+        "description": "This course is for Basic.",
+        "price": "3500",
+        "type": "Basic"
+      },{
+        "name": "Basic After Effects Course",
+        "image": "After Effects.png",
+        "description": "This course is for Basic.",
+        "price": "17000",
+        "type": "Basic"
+      },{
+        "name": "Basic Premier Pro Course",
+        "image": "Premier.png",
+        "description": "This course is for Basic.",
+        "price": "8000",
+        "type": "Basic"
+      },{
+        "name": "Advance Photoshop Course",
+        "image": "Photoshop.png",
+        "description": "This course is for advance.",
+        "price": "7500",
+        "type": "Advance"
+      },{
+        "name": "Advance Illustrator Course",
+        "image": "Illustrator.png",
+        "description": "This course is for advance.",
+        "price": "6800",
+        "type": "Advance"
+      },{
+        "name": "Advance After Effects Course",
+        "image": "After Effects.png",
+        "description": "This course is for advance.",
+        "price": "30000",
+        "type": "Advance"
+      },{
+        "name": "Advance Premier Pro Course",
+        "image": "Premier.png",
+        "description": "This course is for advance.",
+        "price": "12000",
+        "type": "Advance"
+      }
+]

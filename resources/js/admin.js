@@ -2,7 +2,7 @@ import axios from 'axios'
 import moment from 'moment'
 import Noty from 'noty'
 
-export function initAdmin() {
+function initAdmin(socket) {
     const taskTableBody = document.querySelector('#taskTableBody')
     let tasks = []
     let markup 
@@ -13,7 +13,7 @@ export function initAdmin() {
         }
     }).then(res => {
         tasks = res.data
-        markup = generateMarkup()
+        markup = generateMarkup(tasks)
         taskTableBody.innerHTML = markup
     }).catch(err => {
         console.log(err)
@@ -79,6 +79,20 @@ export function initAdmin() {
         `
         }).join('')
     }
+    // Socket
+
+    socket.on('taskPlaced', (task) => {
+        new Noty({
+            type: 'success',
+            timeout: 1000,
+            text: 'New task',
+            progressBar: false,
+            layout: 'topLeft'
+        }).show();
+        tasks.unshift(task)
+        taskTableBody.innerHTML = ''
+        taskTableBody.innerHTML = generateMarkup(tasks)
+    })
 }
 
-module.exports = initAdmin()
+export default initAdmin

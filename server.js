@@ -11,6 +11,7 @@ const flash = require('express-flash')
 // const MongoDbStore =  require ('connect-mongo')(session)
 const MongoStore = require('connect-mongo');
 const passport = require('passport')
+const Emitter = require('events')
 
 //Database Connection
 const url = 'mongodb://localhost/design';
@@ -37,8 +38,13 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 } //24 hours
 }))
 
+//Event Emitter
+const eventEmitter = new Emitter ()
+app.set('eventEmitter', eventEmitter)
+
 // Passport config
 const passportInit = require('./app/config/passport')
+const { Server } = require('http')
 passportInit(passport)
 app.use(passport.initialize())
 app.use(passport.session())
@@ -65,6 +71,24 @@ app.set('view engine', 'ejs')
 require('./routes/web')(app)
 
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
+})
+
+// Socket
+const io = require('socket.io')(server)
+io.on('connection', (socket) => {
+    // Join
+    console.log(socket.id)
+    socket.on('join', (roomName) => {
+        socket.join(roomName)
+    })
+})
+
+eventEmitter.on('taskUpdated', (data) => {
+    io.to(`task_${data.id}`).emit('taskUpdated', data)
+})
+
+eventEmitter.on('taskPlaced', (data) => {
+    io.to('adminroom').emit('taskPlaced', data)
 })
