@@ -1,0 +1,67 @@
+<section>
+  <% if(user) { %>
+  <div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+      <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false"
+        class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+      <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
+        class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform admin-dash overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 rounded-tr-3xl rounded-br-3xl">
+        <div class="flex items-center justify-center mt-8">
+          <div class="">
+            <img class="mx-auto w-1/4" src="/img/user.png" />
+            <span class="text-white text-2xl px-8 font-semibold w-2/3"><%= user.name %></span>
+            <span class="text-gray-300 text-xs capitalize flex justify-center"><%= user.role %></span>
+          </div>
+        </div>
+  
+        <nav class="mt-10">
+  
+          <a class="flex items-center mt-4 py-2 px-6 text-white hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+            href="/customer/tasks">
+            <span><i class="lab la-buffer"></i></span>
+            <span class="mx-3">Tasks</span>
+          </a>
+          <span>
+  
+            <span
+              class="flex items-center mt-4 py-2 px-6 text-white hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100">
+              <i class="las la-sign-out-alt"></i>
+              <form class="ml-4" id="logout" action="/logout" method="POST">
+                <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+              </form>
+            </span>
+          </span>
+        </nav>
+      </div>
+  
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center py-4 px-6 bg-gray-200">
+          <div class="flex items-center">
+            <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
+              <i class="lab la-buromobelexperte"><span>Menu</span></i>
+            </button>
+          </div>
+  
+        </header>
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+          <div class="flex justify-center text-3xl font-bold text-blue-400">
+            <h1>You are our valuable customer</h1>
+          </div>
+          <div class="flex justify-center pb-3 text-grey-100 text-6xl mt-16">
+            <div class="text-center mr-3 border-r pr-3">
+              <h2>34</h2>
+              <span>Tasks</span>
+            </div>
+            <div class="text-center">
+              <h2>29</h2>
+              <span>Delivered</span>
+            </div>
+          </div>
+      </div>
+      </main>
+    </div>
+  </div>
+  </div>
+  <% } %>
+</section>

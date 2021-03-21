@@ -5,7 +5,7 @@ function profileController() {
         async profile(req, res) {
             const profiles = await Profile.find()
             console.log(profiles)
-            return res.render('/customers/profile', {profiles: profiles})
+            return res.render('customers/profiles', {profiles: profiles})
         }
     }
 }
