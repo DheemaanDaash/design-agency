@@ -2,6 +2,7 @@ const homeController = require('../app/http/controllers/homeController')
 const authController = require('../app/http/controllers/authController')
 const cartController = require('../app/http/controllers/customers/cartController')
 const courseController = require('../app/http/controllers/customers/courseController')
+const profileController = require('../app/http/controllers/customers/profileController')
 const taskController = require('../app/http/controllers/customers/taskController')
 const adminTaskController = require('../app/http/controllers/admin/taskController')
 const statusController = require('../app/http/controllers/admin/statusController')
@@ -25,6 +26,7 @@ function initRoutes(app) {
     
     // Customer routes
     app.get('/courses', courseController().course)
+    app.get('/profile', profileController().profile)
     app.post('/tasks', auth, taskController().store)
     app.get('/customer/tasks', auth, taskController().index)
     app.get('/customer/tasks/:id', auth, taskController().show)

@@ -1928,6 +1928,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  //import { initAdmin } from './admin'
 
+ //import socket from 'socket.io'
 
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
@@ -2002,21 +2003,22 @@ function updateStatus(task) {
 
 updateStatus(task); // Socket
 
-var socket = io();
-(0,_admin__WEBPACK_IMPORTED_MODULE_3__.default)(socket); // Join
+var socket = io(); // Join
 
 if (task) {
   socket.emit('join', "task_".concat(task._id));
 }
 
 var adminAreaPath = window.location.pathname;
-console.log(adminAreaPath);
 
 if (adminAreaPath.includes('admin')) {
+  (0,_admin__WEBPACK_IMPORTED_MODULE_3__.default)(socket);
   socket.emit('join', 'adminRoom');
-}
+} //io('taskUpdated', (data) => {
+//socket.io('taskUpdated', (data) => {
 
-socket.io('taskUpdated', function (data) {
+
+socket.on('taskUpdated', function (data) {
   var updatedTask = _objectSpread({}, task);
 
   updatedTask.updatedAt = moment__WEBPACK_IMPORTED_MODULE_2___default()().format();

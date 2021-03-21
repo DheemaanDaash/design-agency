@@ -1,18 +1,73 @@
-<section class="tasks light-section">
-    <div class="container mx-auto pt-12">
-        <h1 class="font-bold text-lg mb-4">All Tasks</h1>
-        <table class="w-full table-auto bg-white mb-4">
-            <thead>
-                <tr>
-                    <th class="px-4 py-2 text-left">Tasks</th>
-                    <th class="px-4 py-2 text-left">Customer</th>
-                    <th class="px-4 py-2 text-left">Address</th>
-                    <th class="px-4 py-2 text-left">Status</th>
-                    <th class="px-4 py-2 text-left">Placed at</th>
-                </tr>
-            </thead>
-            <tbody id=taskTableBody>
-            </tbody>
-        </table>
+<div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+        <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform admin-dash overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 rounded-tr-3xl rounded-br-3xl">
+            <div class="flex items-center justify-center mt-8">
+                <div class="flex items-center">
+                    <img class="mx-auto" src="/img/user-cog-50.png"/>
+                    <span class="text-white text-2xl mx-2 font-semibold">Admin</span><br>
+                    <span class="text-gray-300 text-xs">Task Controller</span>
+                </div>
+            </div>
+    
+            <nav class="mt-10">
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="/">
+                    <span><i class="las la-user"></i></span>
+                    <span class="mx-3">Customer</span>
+                </a>
+    
+                <a class="flex items-center mt-4 py-2 px-6 text-white hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                    href="/admin/tasks">
+                    <span><i class="lab la-buffer"></i></span>
+                    <span class="mx-3">Tasks</span>
+                </a>
+                    <span>
+                        
+                        <span class="flex items-center mt-4 py-2 px-6 text-white hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100">
+                            <i class="las la-sign-out-alt"></i>
+                            <form class="ml-4" id="logout" action="/logout" method="POST">
+                                <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+                            </form>
+                        </span>
+                    </span> 
+            </nav>
+        </div>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="flex justify-between items-center py-4 px-6 bg-gray-200">
+                <div class="flex items-center">
+                    <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
+                        <i class="lab la-buromobelexperte"><span>Menu</span></i>
+                    </button>
+                </div>
+    
+            </header>
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                <div class="container mx-auto px-6 py-8">
+                    <h3 class="text-gray-700 text-3xl font-medium">All Tasks</h3>
+                    <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                        <div  class="mx-auto inline-block min-w-full shadow rounded-lg overflow-hidden">
+                            <table class="min-w-full leading-normal ">
+                                <thead>
+                                    <tr>
+                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Tasks</th>
+                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Customer</th>
+                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Address</th>
+                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Created At</th>
+                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id=taskTableBody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
     </div>
-</section>
+</div>

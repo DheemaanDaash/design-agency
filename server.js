@@ -70,7 +70,6 @@ app.set('view engine', 'ejs')
 
 require('./routes/web')(app)
 
-
 const server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })

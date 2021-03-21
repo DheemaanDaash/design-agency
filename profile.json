@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Dhiman Dash",
+        "image": "avatar3.png",
+        "email": "dhiman@designagency.com",
+        "role": "Customer"
+      },{
+        "name": "Jahirul Haque",
+        "image": "avatar1.png",
+        "email": "dhiman@designagency.com",
+        "type": "Customer"
+      },{
+        "name": "Nusrat Farjana",
+        "image": "avatar2.png",
+        "email": "nusrat@designagency.com",
+        "type": "Premium Customer"
+      },{
+        "name": "Nishat Ahmed Meem",
+        "image": "avatar2.png",
+        "email": "meem@designagency.com",
+        "type": "Premium Customer"
+      },{
+        "name": "Komol Roy",
+        "image": "avatar1.png",
+        "email": "komol@designagency.com",
+        "type": "Premium Customer"
+      },{
+        "name": "Akhlak Ashik",
+        "image": "avatar3.png",
+        "email": "ashik@designagency.com",
+        "type": "Premium Customer"
+      },{
+        "name": "Ruposree Dey",
+        "image": "avatar2.png",
+        "email": "ruposree@designagency.com",
+        "type": "Premium Customer"
+      },{
+        "name": "Amit Das",
+        "image": "avatar3.png",
+        "email": "amit@designagency.com",
+        "type": "Customer"
+      }
+]

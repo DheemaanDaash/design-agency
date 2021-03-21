@@ -296,7 +296,26 @@ nav li a:hover {
   color: #00adff;
 }
 
+.admin-dash {
+  background: #00adff;
+}
+
+.logout {
+  background: #ff2828;
+}
+.logout:hover {
+  background: #ff6464;
+}
+
 section.hero {
+  background: #d2f1ff;
+}
+
+section.hero2 {
+  background: white;
+}
+
+section.client-logo {
   background: #d2f1ff;
 }
 
@@ -468,4 +487,24 @@ section.status {
   float: right;
   font-size: 14px;
   margin-top: 8px;
+}
+
+@media (max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  .status-box ul li span:before {
+    font-size: 34px;
+  }
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
 }

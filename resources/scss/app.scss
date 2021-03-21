@@ -22,7 +22,23 @@ nav li a {
     }
 }
 
+.admin-dash {
+    background: $primary;
+}
+.logout {
+    background: rgb(255, 40, 40);
+    &:hover {
+        background: rgb(255, 100, 100);
+    }
+}
+
 section.hero {
+    background: $pure;
+}
+section.hero2 {
+    background: white;
+}
+section.client-logo {
     background: $pure;
 }
 .btn-primary {
@@ -197,3 +213,23 @@ section.status {
     font-size: 14px;
     margin-top: 8px;
 }
+
+@media(max-width: 1060px) {
+    .container {
+        max-width: 90%;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+@media(max-width: 768px) {
+    .status-box ul li span:before {
+        font-size: 34px;
+    }
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+  }

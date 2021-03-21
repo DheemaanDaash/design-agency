@@ -3,6 +3,7 @@ import Noty from 'noty'
 import moment from 'moment'
 //import { initAdmin } from './admin'
 import initAdmin from './admin'
+//import socket from 'socket.io'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
@@ -80,20 +81,20 @@ updateStatus(task);
 // Socket
 let socket = io()
 
-initAdmin(socket)
-
 // Join
 if(task) {
     socket.emit('join', `task_${task._id}`)
 }
 
 let adminAreaPath = window.location.pathname
-console.log(adminAreaPath)
 if(adminAreaPath.includes('admin')) {
+    initAdmin(socket)
     socket.emit('join', 'adminRoom')
 }
 
-socket.io('taskUpdated', (data) => {
+//io('taskUpdated', (data) => {
+//socket.io('taskUpdated', (data) => {
+socket.on('taskUpdated', (data) => {
     const updatedTask = { ...task }
     updatedTask.updatedAt = moment().format()
     updatedTask.status = data.status
