@@ -14,7 +14,7 @@ const passport = require('passport')
 const Emitter = require('events')
 
 //Database Connection
-const url = 'mongodb://localhost/design';
+/*const url = 'mongodb://localhost/design';
 //const url = 'mongodb+srv://dh33m44n:P9yqJXKMAGGaTsGX@cluster0.mskgs.mongodb.net/design?retryWrites=true&w=majority';
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true, useFindAndModify : true });
 const connection = mongoose.connection;
@@ -22,7 +22,18 @@ connection.once('open', () => {
     console.log('Database connected...');
 }).catch(err => {
     console.log('Connection failed...')
-});
+});*/
+
+//DB Connection Updated
+mongoose.connect('mongodb://localhost/design', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "connection error:"));
+  db.once("open", () => {
+    console.log("Db Connected...");
+  });
 
 //Session Config and Store
 app.use(session({
